@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project=".\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.1\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('.\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.1\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project=".\packages\Microsoft.Net.Compilers.1.2.1\build\Microsoft.Net.Compilers.props" Condition="Exists('.\packages\Microsoft.Net.Compilers.1.2.1\build\Microsoft.Net.Compilers.props')" />
@@ -25,6 +25,7 @@
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
     <TargetFrameworkProfile />
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -177,11 +178,146 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\AlexaController.cs" />
     <Compile Include="Controllers\MessagesController.cs" />
     <Compile Include="Dialogs\EchoDialog.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\MixedDateTimeConverter.cs" />
+    <Compile Include="Models\Alexa\Request\Application.cs" />
+    <Compile Include="Models\Alexa\Request\Context.cs" />
+    <Compile Include="Models\Alexa\Request\Device.cs" />
+    <Compile Include="Models\Alexa\Request\Intent.cs" />
+    <Compile Include="Models\Alexa\Request\IntentProperty.cs" />
+    <Compile Include="Models\Alexa\Request\IntentSignature.cs" />
+    <Compile Include="Models\Alexa\Request\Permissions.cs" />
+    <Compile Include="Models\Alexa\Request\RequestVerification.cs" />
+    <Compile Include="Models\Alexa\Request\Resolution.cs" />
+    <Compile Include="Models\Alexa\Request\ResolutionAuthority.cs" />
+    <Compile Include="Models\Alexa\Request\ResolutionStatus.cs" />
+    <Compile Include="Models\Alexa\Request\ResolutionStatusCode.cs" />
+    <Compile Include="Models\Alexa\Request\ResolutionValue.cs" />
+    <Compile Include="Models\Alexa\Request\ResolutionValueContainer.cs" />
+    <Compile Include="Models\Alexa\Request\Session.cs" />
+    <Compile Include="Models\Alexa\Request\SkillRequest.cs" />
+    <Compile Include="Models\Alexa\Request\Slot.cs" />
+    <Compile Include="Models\Alexa\Request\SupportedInterfaces.cs" />
+    <Compile Include="Models\Alexa\Request\System.cs" />
+    <Compile Include="Models\Alexa\Request\Type\AccountLinkSkillEventRequest.cs" />
+    <Compile Include="Models\Alexa\Request\Type\AudioPlayerRequest.cs" />
+    <Compile Include="Models\Alexa\Request\Type\AudioRequestType.cs" />
+    <Compile Include="Models\Alexa\Request\Type\BuiltInIntents.cs" />
+    <Compile Include="Models\Alexa\Request\Type\Converters\AudioPlayerRequestTypeConverter.cs" />
+    <Compile Include="Models\Alexa\Request\Type\Converters\DefaultRequestTypeConverter.cs" />
+    <Compile Include="Models\Alexa\Request\Type\Converters\PlaybackRequestTypeConverter.cs" />
+    <Compile Include="Models\Alexa\Request\Type\Converters\SkillEventRequestTypeConverter.cs" />
+    <Compile Include="Models\Alexa\Request\Type\Converters\TemplateEventRequestTypeConverter.cs" />
+    <Compile Include="Models\Alexa\Request\Type\DialogState.cs" />
+    <Compile Include="Models\Alexa\Request\Type\DisplayElementSelectedRequest.cs" />
+    <Compile Include="Models\Alexa\Request\Type\Error.cs" />
+    <Compile Include="Models\Alexa\Request\Type\ErrorCause.cs" />
+    <Compile Include="Models\Alexa\Request\Type\ErrorType.cs" />
+    <Compile Include="Models\Alexa\Request\Type\IntentRequest.cs" />
+    <Compile Include="Models\Alexa\Request\Type\IRequestTypeConverter.cs" />
+    <Compile Include="Models\Alexa\Request\Type\LaunchRequest.cs" />
+    <Compile Include="Models\Alexa\Request\Type\Permission.cs" />
+    <Compile Include="Models\Alexa\Request\Type\PermissionSkillEventRequest.cs" />
+    <Compile Include="Models\Alexa\Request\Type\PlaybackControllerRequest.cs" />
+    <Compile Include="Models\Alexa\Request\Type\PlaybackControllerRequestType.cs" />
+    <Compile Include="Models\Alexa\Request\Type\PlaybackState.cs" />
+    <Compile Include="Models\Alexa\Request\Type\Reason.cs" />
+    <Compile Include="Models\Alexa\Request\Type\Request.cs" />
+    <Compile Include="Models\Alexa\Request\Type\RequestConverter.cs" />
+    <Compile Include="Models\Alexa\Request\Type\SessionEndedRequest.cs" />
+    <Compile Include="Models\Alexa\Request\Type\SkillEventPermissions.cs" />
+    <Compile Include="Models\Alexa\Request\Type\SkillEventRequest.cs" />
+    <Compile Include="Models\Alexa\Request\Type\SystemExceptionRequest.cs" />
+    <Compile Include="Models\Alexa\Request\User.cs" />
+    <Compile Include="Models\Alexa\Response\AskForPermissionsConsentCard.cs" />
+    <Compile Include="Models\Alexa\Response\CardImage.cs" />
+    <Compile Include="Models\Alexa\Response\Directive\AudioItem.cs" />
+    <Compile Include="Models\Alexa\Response\Directive\AudioItemMetadata.cs" />
+    <Compile Include="Models\Alexa\Response\Directive\AudioItemSource.cs" />
+    <Compile Include="Models\Alexa\Response\Directive\AudioItemSources.cs" />
+    <Compile Include="Models\Alexa\Response\Directive\AudioItemStream.cs" />
+    <Compile Include="Models\Alexa\Response\Directive\AudioPlayerPlayDirective.cs" />
+    <Compile Include="Models\Alexa\Response\Directive\ClearBehavior.cs" />
+    <Compile Include="Models\Alexa\Response\Directive\ClearQueueDirective.cs" />
+    <Compile Include="Models\Alexa\Response\Directive\DialogConfirmIntent.cs" />
+    <Compile Include="Models\Alexa\Response\Directive\DialogConfirmSlot.cs" />
+    <Compile Include="Models\Alexa\Response\Directive\DialogDelegate.cs" />
+    <Compile Include="Models\Alexa\Response\Directive\DialogElicitSlot.cs" />
+    <Compile Include="Models\Alexa\Response\Directive\DisplayRenderTemplateDirective.cs" />
+    <Compile Include="Models\Alexa\Response\Directive\Hint.cs" />
+    <Compile Include="Models\Alexa\Response\Directive\HintDirective.cs" />
+    <Compile Include="Models\Alexa\Response\Directive\IBodyTemplate.cs" />
+    <Compile Include="Models\Alexa\Response\Directive\IListTemplate.cs" />
+    <Compile Include="Models\Alexa\Response\Directive\ITemplate.cs" />
+    <Compile Include="Models\Alexa\Response\Directive\ListItem.cs" />
+    <Compile Include="Models\Alexa\Response\Directive\PlayBehavior.cs" />
+    <Compile Include="Models\Alexa\Response\Directive\StopDirective.cs" />
+    <Compile Include="Models\Alexa\Response\Directive\Templates\BackButtonVisibility.cs" />
+    <Compile Include="Models\Alexa\Response\Directive\Templates\ImageSize.cs" />
+    <Compile Include="Models\Alexa\Response\Directive\Templates\ImageSource.cs" />
+    <Compile Include="Models\Alexa\Response\Directive\Templates\TemplateContent.cs" />
+    <Compile Include="Models\Alexa\Response\Directive\Templates\TemplateImage.cs" />
+    <Compile Include="Models\Alexa\Response\Directive\Templates\TemplateText.cs" />
+    <Compile Include="Models\Alexa\Response\Directive\Templates\TextType.cs" />
+    <Compile Include="Models\Alexa\Response\Directive\Templates\Types\BodyTemplate1.cs" />
+    <Compile Include="Models\Alexa\Response\Directive\Templates\Types\BodyTemplate2.cs" />
+    <Compile Include="Models\Alexa\Response\Directive\Templates\Types\BodyTemplate3.cs" />
+    <Compile Include="Models\Alexa\Response\Directive\Templates\Types\BodyTemplate6.cs" />
+    <Compile Include="Models\Alexa\Response\Directive\Templates\Types\BodyTemplate7.cs" />
+    <Compile Include="Models\Alexa\Response\Directive\Templates\Types\ListTemplate1.cs" />
+    <Compile Include="Models\Alexa\Response\Directive\Templates\Types\ListTemplate2.cs" />
+    <Compile Include="Models\Alexa\Response\Directive\VideoAppDirective.cs" />
+    <Compile Include="Models\Alexa\Response\Directive\VideoItem.cs" />
+    <Compile Include="Models\Alexa\Response\Directive\VideoItemMetadata.cs" />
+    <Compile Include="Models\Alexa\Response\Directive\VoicePlayerSpeakDirective.cs" />
+    <Compile Include="Models\Alexa\Response\ICard.cs" />
+    <Compile Include="Models\Alexa\Response\IDirective.cs" />
+    <Compile Include="Models\Alexa\Response\IOutputSpeech.cs" />
+    <Compile Include="Models\Alexa\Response\IProgressiveResponseDirective.cs" />
+    <Compile Include="Models\Alexa\Response\IResponse.cs" />
+    <Compile Include="Models\Alexa\Response\LinkAccountCard.cs" />
+    <Compile Include="Models\Alexa\Response\PlainTextOutputSpeech.cs" />
+    <Compile Include="Models\Alexa\Response\ProgressiveResponse.cs" />
+    <Compile Include="Models\Alexa\Response\ProgressiveResponseHeader.cs" />
+    <Compile Include="Models\Alexa\Response\ProgressiveResponseRequest.cs" />
+    <Compile Include="Models\Alexa\Response\Reprompt.cs" />
+    <Compile Include="Models\Alexa\Response\RequestedPermission.cs" />
+    <Compile Include="Models\Alexa\Response\Response.cs" />
+    <Compile Include="Models\Alexa\Response\SimpleCard.cs" />
+    <Compile Include="Models\Alexa\Response\SkillResponse.cs" />
+    <Compile Include="Models\Alexa\Response\SsmlOutputSpeech.cs" />
+    <Compile Include="Models\Alexa\Response\Ssml\AmazonEffect.cs" />
+    <Compile Include="Models\Alexa\Response\Ssml\Audio.cs" />
+    <Compile Include="Models\Alexa\Response\Ssml\Break.cs" />
+    <Compile Include="Models\Alexa\Response\Ssml\BreakStrength.cs" />
+    <Compile Include="Models\Alexa\Response\Ssml\Emphasis.cs" />
+    <Compile Include="Models\Alexa\Response\Ssml\EmphasisLevel.cs" />
+    <Compile Include="Models\Alexa\Response\Ssml\ICommonSsml.cs" />
+    <Compile Include="Models\Alexa\Response\Ssml\InterpretAs.cs" />
+    <Compile Include="Models\Alexa\Response\Ssml\IParagraphSsml.cs" />
+    <Compile Include="Models\Alexa\Response\Ssml\ISentenceSsml.cs" />
+    <Compile Include="Models\Alexa\Response\Ssml\ISsml.cs" />
+    <Compile Include="Models\Alexa\Response\Ssml\Namespaces.cs" />
+    <Compile Include="Models\Alexa\Response\Ssml\Paragraph.cs" />
+    <Compile Include="Models\Alexa\Response\Ssml\Phoneme.cs" />
+    <Compile Include="Models\Alexa\Response\Ssml\PhonemeAlphabet.cs" />
+    <Compile Include="Models\Alexa\Response\Ssml\PlainText.cs" />
+    <Compile Include="Models\Alexa\Response\Ssml\Prosody.cs" />
+    <Compile Include="Models\Alexa\Response\Ssml\ProsodyPitch.cs" />
+    <Compile Include="Models\Alexa\Response\Ssml\ProsodyRate.cs" />
+    <Compile Include="Models\Alexa\Response\Ssml\ProsodyVolume.cs" />
+    <Compile Include="Models\Alexa\Response\Ssml\SayAs.cs" />
+    <Compile Include="Models\Alexa\Response\Ssml\Sentence.cs" />
+    <Compile Include="Models\Alexa\Response\Ssml\Speech.cs" />
+    <Compile Include="Models\Alexa\Response\Ssml\Sub.cs" />
+    <Compile Include="Models\Alexa\Response\Ssml\Word.cs" />
+    <Compile Include="Models\Alexa\Response\Ssml\WordRole.cs" />
+    <Compile Include="Models\Alexa\Response\StandardCard.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -237,7 +373,6 @@
   <Target Name="AfterBuild">
   </Target>
   -->
-  <Import Project="PostDeployScripts\IncludeSources.targets" Condition="Exists('PostDeployScripts\IncludeSources.targets')"/>
-  <Import Project="..\PostDeployScripts\IncludeSources.targets" Condition="Exists('..\PostDeployScripts\IncludeSources.targets')"/>
-  
+  <Import Project="PostDeployScripts\IncludeSources.targets" Condition="Exists('PostDeployScripts\IncludeSources.targets')" />
+  <Import Project="..\PostDeployScripts\IncludeSources.targets" Condition="Exists('..\PostDeployScripts\IncludeSources.targets')" />
 </Project>

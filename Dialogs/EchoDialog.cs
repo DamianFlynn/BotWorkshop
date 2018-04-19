@@ -33,7 +33,10 @@ namespace Microsoft.Bot.Sample.SimpleEchoBot
             }
             else
             {
-                await context.PostAsync($"{this.count++}: You said {message.Text}");
+                // calculate something for us to return
+                int length = (message.Text ?? string.Empty).Length;
+
+                await context.PostAsync($"{this.count++}: You said {message.Text} which was {length} characters");
                 context.Wait(MessageReceivedAsync);
             }
         }

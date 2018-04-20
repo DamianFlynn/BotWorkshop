@@ -47,6 +47,9 @@
     <NoWarn>CS1998</NoWarn>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ApiAiSDK, Version=1.6.5.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\ApiAiSDK.1.6.5\lib\net35\ApiAiSDK.dll</HintPath>
+    </Reference>
     <Reference Include="Autofac, Version=3.5.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
       <HintPath>packages\Autofac.3.5.2\lib\net40\Autofac.dll</HintPath>
       <Private>True</Private>
@@ -179,6 +182,7 @@
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AlexaController.cs" />
+    <Compile Include="Controllers\DialogflowController.cs" />
     <Compile Include="Controllers\MessagesController.cs" />
     <Compile Include="Dialogs\EchoDialog.cs" />
     <Compile Include="Global.asax.cs">

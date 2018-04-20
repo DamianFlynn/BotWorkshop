@@ -1,5 +1,6 @@
 ﻿using Alexa.NET.Request;
 using Alexa.NET.Response;
+using SimpleEchoBot.Models.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,7 +22,8 @@ namespace SimpleEchoBot.Controllers
 
             response.Response.OutputSpeech = new PlainTextOutputSpeech()
             {
-                Text = "Hello Alexa!"
+                //Text = "Hello Alexa!"
+                Text = Handlers.WelcomeIntent.Process(new CommonModel()).Response.Text
             };
 
             return response;

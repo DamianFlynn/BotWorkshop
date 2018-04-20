@@ -1,4 +1,5 @@
 ﻿using Alexa.NET.Request;
+using Alexa.NET.Request.Type;
 using Alexa.NET.Response;
 using SimpleEchoBot.Models.Common;
 using System;
@@ -20,10 +21,26 @@ namespace SimpleEchoBot.Controllers
                 Response = new ResponseBody()
             };
 
+            var responseText = string.Empty;
+            var intentRequest = skillRequest.Request as IntentRequest;
+
+            switch (intentRequest.Intent.Name)
+            {
+                case "WelcomeIntent":
+                    responseText = Handlers.WelcomeIntent.Process(new CommonModel()).Response.Text;
+                    break;
+
+                case "ReservationIntent":
+                    responseText = Handlers.ReservationIntent.Process(new CommonModel()).Response.Text;
+                    break;
+
+            }
+
+
             response.Response.OutputSpeech = new PlainTextOutputSpeech()
             {
                 //Text = "Hello Alexa!"
-                Text = Handlers.WelcomeIntent.Process(new CommonModel()).Response.Text
+                Text = responseText
             };
 
             return response;

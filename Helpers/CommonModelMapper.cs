@@ -80,5 +80,17 @@ namespace SimpleEchoBot.Helpers
         }
 
 
+        // Mapping Common Model back to Dialogflow for Response
+
+        internal static dynamic CommonModelToApiAi(CommonModel commonModel)
+        {
+            return new
+            {
+                speech = commonModel.Response.Text,
+                displayText = commonModel.Response.Text,
+                source = "Azure Bootcamp Bots"
+            };
+        }
+
     }
 }

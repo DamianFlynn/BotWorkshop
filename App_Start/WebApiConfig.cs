@@ -1,5 +1,6 @@
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
+using SimpleEchoBot.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,8 +10,17 @@ namespace SimpleEchoBot
 {
     public static class WebApiConfig
     {
+        public static IntentsList IntentHandlers { get; private set; }
+
         public static void Register(HttpConfiguration config)
         {
+            IntentHandlers = new IntentsList
+            {
+                { "ReservationsIntent", (cm) => Handlers.ReservationIntent.Process(cm) },
+                { "DefaultWelcomeIntent", (cm) => Handlers.WelcomeIntent.Process(cm) }
+            };
+
+
             // Json settings
             config.Formatters.JsonFormatter.SerializerSettings.NullValueHandling = NullValueHandling.Ignore;
             config.Formatters.JsonFormatter.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();

@@ -1,6 +1,7 @@
 ﻿using Alexa.NET.Request;
 using Alexa.NET.Request.Type;
 using Alexa.NET.Response;
+using SimpleEchoBot.Helpers;
 using SimpleEchoBot.Models.Common;
 using System;
 using System.Collections.Generic;
@@ -15,6 +16,15 @@ namespace SimpleEchoBot.Controllers
     {
         public SkillResponse Post(SkillRequest skillRequest)
         {
+            var commonModel = CommonModelMapper.AlexaToCommonModel(skillRequest);
+            if (commonModel == null)
+                return null;
+
+            commonModel = IntentRouter.Process(commonModel);
+
+            return CommonModelMapper.CommonModelToAlexa(commonModel);
+
+            /*
             var response = new SkillResponse()
             {
                 Version = "1.0",
@@ -44,6 +54,7 @@ namespace SimpleEchoBot.Controllers
             };
 
             return response;
+            */
         }
 
         public string Get()

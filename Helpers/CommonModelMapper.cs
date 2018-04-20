@@ -82,7 +82,7 @@ namespace SimpleEchoBot.Helpers
 
         // Mapping Common Model back to Dialogflow for Response
 
-        internal static dynamic CommonModelToApiAi(CommonModel commonModel)
+        internal static dynamic CommonModelToDialogflow(CommonModel commonModel)
         {
             return new
             {

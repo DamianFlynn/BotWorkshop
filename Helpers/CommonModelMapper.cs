@@ -1,5 +1,6 @@
 ﻿using Alexa.NET.Request;
 using Alexa.NET.Request.Type;
+using Alexa.NET.Response;
 using ApiAiSDK.Model;
 using SimpleEchoBot.Models.Common;
 using System;
@@ -42,6 +43,22 @@ namespace SimpleEchoBot.Helpers
             }
 
             return commonModel;
+        }
+
+
+        // Mapping Common Model to AlexaSDK
+
+        internal static SkillResponse CommonModelToAlexa(CommonModel commonModel)
+        {
+            var response = new SkillResponse()
+            {
+                Version = "1.0",
+                Response = new ResponseBody()
+            };
+
+            response.Response.OutputSpeech = new PlainTextOutputSpeech { Text = commonModel.Response.Text };
+
+            return response;
         }
 
 

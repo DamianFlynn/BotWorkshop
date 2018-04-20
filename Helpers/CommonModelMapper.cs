@@ -1,5 +1,6 @@
 ﻿using Alexa.NET.Request;
 using Alexa.NET.Request.Type;
+using ApiAiSDK.Model;
 using SimpleEchoBot.Models.Common;
 using System;
 using System.Collections.Generic;
@@ -42,6 +43,25 @@ namespace SimpleEchoBot.Helpers
 
             return commonModel;
         }
+
+
+        // Mapping Dialogflow ApiAiSDK to Common Model
+
+        internal static CommonModel DialogflowToCommonModel(AIResponse aiResponse)
+        {
+            var commonModel = new CommonModel()
+            {
+                Id = aiResponse.Id
+            };
+
+            commonModel.Session.Id = aiResponse.SessionId;
+            commonModel.Request.Intent = aiResponse.Result.Metadata.IntentName;
+            commonModel.Request.Parameters = aiResponse.Result.Parameters.ToList()
+                .ConvertAll(p => new KeyValuePair<string, string>(p.Key, p.Value.ToString()));
+
+            return commonModel;
+        }
+
 
     }
 }
